@@ -1,7 +1,12 @@
+import Recipe from "../components/Recipe"
+import Recipes from "../components/Recipes"
+import "./Home.css"
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div className="homepage">
+      <Recipes />
+    </div>
   )
 }
 
