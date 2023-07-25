@@ -1,9 +1,9 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Formulaire from './pages/FormRecipe'
-import Navbar from './components/Layout/Navbar'
 import RecipesProvider from './contexts/RecipeContexts'
 import Home from './pages/Home'
+import Navbar from './Layout/Navbar'
 
 function App () {
   return (
