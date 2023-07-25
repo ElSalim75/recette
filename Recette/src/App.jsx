@@ -1,8 +1,8 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Navbar from './Layout/Navbar'
-import Formulaire from './pages/Formulaire'
+import Home from './components/pages/Home'
+import Formulaire from './components/pages/FormRecipe'
+import Navbar from './components/Layout/Navbar'
 
 function App () {
   return (

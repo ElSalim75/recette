@@ -1,0 +1,46 @@
+.divForm {
+    padding-top: 85px;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input {
+    height: 50px;
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.inputSteps {
+    height: 400px;
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.inputIngredients {
+    height: 200px;
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.inputTags {
+    height: 50px;
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+button {
+    width: 500px;
+}
