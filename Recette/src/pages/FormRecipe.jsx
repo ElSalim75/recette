@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './FormRecipe.scss'
-import { useRecipes } from '../../contexts/RecipeContexts'
+import { useRecipes } from '../contexts/RecipeContexts'
 
 const Formulaire = () => {
   const [title, setTitle] = useState('')
