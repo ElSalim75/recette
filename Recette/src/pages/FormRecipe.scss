@@ -63,6 +63,12 @@ h1 {
   height: 32px;
 }
 
+.ingredient-display {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 #inputTags {
 }
 

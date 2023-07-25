@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './FormRecipe.scss'
 import { useRecipes } from '../contexts/RecipeContexts'
+import Ingredient from '../components/Ingredient'
 
 const Formulaire = () => {
   const [title, setTitle] = useState('')
@@ -8,17 +9,26 @@ const Formulaire = () => {
   const [picture, setPicture] = useState('')
   const [time, setTime] = useState('')
   const [difficulty, setDifficulty] = useState('')
-  const [portion, setPortion] = useState(0)
+  const [portion, setPortion] = useState('')
   const [tags, setTags] = useState('')
+  const [ingredientList, setIngredientList] = useState([])
   const [ingredients, setIngredients] = useState('')
-  const [ingredientsQuantity, setIngredientsQuantity] = useState(0)
+  const [ingredientsQuantity, setIngredientsQuantity] = useState('')
   const [ingredientsUnite, setIngredientsUnite] = useState('')
 
   const { addRecipe } = useRecipes()
 
-  const addIngredient = (e) => {
+  const addIngredient = e => {
     e.preventDefault()
-    console.log('added');
+    setIngredientList([
+      ...ingredientList,
+      {
+        ingredients: ingredients,
+        ingredientsQuantity: ingredientsQuantity,
+        ingredientsUnite: ingredientsUnite
+      }
+    ])
+    console.log('added')
   }
 
   const handleSubmit = e => {
@@ -110,18 +120,26 @@ const Formulaire = () => {
           <input
             value={ingredientsQuantity}
             onChange={e => setIngredientsQuantity(e.target.value)}
-            type='text'
-            placeholder='Ingrédients'
+            type='number'
+            placeholder='Poids'
           ></input>
           <select
             value={ingredientsUnite}
             onChange={e => setIngredientsUnite(e.target.value)}
           >
+            <option value=''>-- Unité --</option>
             <option value='g'>g</option>
             <option value='kg'>kg</option>
             <option value='L'>L</option>
           </select>
-          <button className='add-ingredient-btn' onClick={addIngredient}>+</button>
+          <button className='add-ingredient-btn' onClick={addIngredient}>
+            +
+          </button>
+        </div>
+        <div className='ingredient-display'>
+          {ingredientList.map((ingredient, i) => (
+            <Ingredient key={i} ingredient={ingredient} />
+          ))}
         </div>
         <button onClick={handleSubmit}>Valider</button>
       </form>
