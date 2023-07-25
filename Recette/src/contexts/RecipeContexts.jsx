@@ -7,7 +7,7 @@ const RecipesProvider = ({ children }) => {
     {
       title: 'Gnocchis arrabiata',
       steps: 'testSteps',
-      picture: 'testPic',
+      picture: 'https://www.cookwithkushi.com/wp-content/uploads/2018/12/IMG_5574_.jpg',
       time: 20,
       difficulty: 'testDif',
       portion: 'testPortion', 
@@ -22,7 +22,7 @@ const RecipesProvider = ({ children }) => {
     {
       title: 'Boeuf bourgignon',
       steps: 'testSteps',
-      picture: 'testPic',
+      picture: 'https://img-3.journaldesfemmes.fr/3q1hdTGIoj2XznsQWzr9V0Cg3KY=/800x600/smart/d6db2baa728b47f8adbf30b99a957dc0/recipe-jdf/10002051.jpg',
       time: 30,
       difficulty: 'testDif',
       portion: 'testPortion',
@@ -36,7 +36,7 @@ const RecipesProvider = ({ children }) => {
     {
       title: 'Salade de tomates',
       steps: 'testSteps',
-      picture: 'testPic',
+      picture: 'https://static.750g.com/images/1200-630/26b5187584dca9d6a78241a86f870961/salade-de-tomates.jpeg',
       time: 10,
       difficulty: 'testDif',
       portion: 'testPortion',

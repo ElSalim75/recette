@@ -4,7 +4,9 @@ import "./Recipe.css"
 const Recipe = ({recipe}) => {
   return (
     <div className='recipe'>
-        <img src={recipe.picture} />
+        <div className='img-container'>
+            <img src={recipe.picture} />
+        </div>
         <div className='recipe-info'>
             <div>{recipe.title}</div>
             <div>Temps de préparation :  {recipe.time} min</div>

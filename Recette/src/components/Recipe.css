@@ -1,8 +1,18 @@
 .recipe {
     display: flex;
+    align-items: center;
     gap: 25px;
     height: 100px;
+}
 
+.recipe .img-container {
+    height: 100%;   
+}
+
+.recipe img {
+    height: 100%;
+    width: 100px;
+    object-fit: cover;
 }
 
 .recipe .recipe-info {
