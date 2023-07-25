@@ -11,6 +11,8 @@ const Formulaire = () => {
   const [portion, setPortion] = useState(0)
   const [tags, setTags] = useState('')
   const [ingredients, setIngredients] = useState('')
+  const [ingredientsQuantity, setIngredientsQuantity] = useState(0)
+  const [ingredientsUnite, setIngredientsUnite] = useState('')
 
   const { addRecipe } = useRecipes()
 
@@ -24,7 +26,11 @@ const Formulaire = () => {
       difficulty: difficulty,
       portion: portion,
       tags: tags,
-      ingredients: ingredients
+      ingredientList: {
+        ingredients: ingredients,
+        ingredientsQuantity: ingredientsQuantity,
+        ingredientsUnite: ingredientsUnite
+      }
     })
   }
 
@@ -56,7 +62,7 @@ const Formulaire = () => {
         <input
           value={time}
           onChange={e => setTime(e.target.value)}
-          type='text'
+          type='number'
           placeholder='Durée'
           className='input'
         />
@@ -88,6 +94,8 @@ const Formulaire = () => {
           placeholder='Tags'
           id='inputTags'
         />
+        {/* 2txt 1 select ingredient */}
+
         <input
           value={ingredients}
           onChange={e => setIngredients(e.target.value)}
@@ -95,6 +103,21 @@ const Formulaire = () => {
           placeholder='Ingrédients'
           id='inputIngredients'
         />
+        <input
+          value={ingredientsQuantity}
+          onChange={e => setIngredientsQuantity(e.target.value)}
+          type='text'
+          placeholder='Ingrédients'
+          id='inputIngredients'
+        ></input>
+        <select
+          value={ingredientsUnite}
+          onChange={e => setIngredientsUnite(e.target.value)}
+        >
+          <option value='g'></option>
+          <option value='kg'></option>
+          <option value='L'></option>
+        </select>
         <button type='submit'>Valider</button>
       </form>
     </div>

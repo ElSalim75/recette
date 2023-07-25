@@ -8,31 +8,44 @@ const RecipesProvider = ({ children }) => {
       title: 'Gnocchis arrabiata',
       steps: 'testSteps',
       picture: 'testPic',
-      time: '20',
+      time: 20,
       difficulty: 'testDif',
-      portion: 'testPortion',
-      tags: 'testTags',
-      ingredients: 'testIngre'
+      portion: 'testPortion', 
+      tags: ['tag1', 'tag2', 'tag3'],
+      ingredients: {
+        ingredients: 'Farine',
+        ingredientsQuantity: 500,
+        ingredientsUnite: 'g'
+      }
+      //check param url react router dom
     },
     {
       title: 'Boeuf bourgignon',
       steps: 'testSteps',
       picture: 'testPic',
-      time: '30',
+      time: 30,
       difficulty: 'testDif',
       portion: 'testPortion',
-      tags: 'testTags',
-      ingredients: 'testIngre'
+      tags: ['tag4', 'tag2', 'tag6'],
+      ingredients: {
+        ingredients: 'Farine',
+        ingredientsQuantity: 500,
+        ingredientsUnite: 'g'
+      }
     },
     {
       title: 'Salade de tomates',
       steps: 'testSteps',
       picture: 'testPic',
-      time: '10',
+      time: 10,
       difficulty: 'testDif',
       portion: 'testPortion',
-      tags: 'testTags',
-      ingredients: 'testIngre'
+      tags: ['tag1', 'tag7', 'tag5'],
+      ingredients: {
+        ingredients: 'Farine',
+        ingredientsQuantity: 500,
+        ingredientsUnite: 'g'
+      }
     }
   ])
 
