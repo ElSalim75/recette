@@ -31,7 +31,7 @@ const Home = () => {
           <div className='recipe'>
             <Link to={`/details-recette/${i}`}>
               <Recipe key={i} recipe={recipe} />
-              </Link>
+            </Link>
           </div>
         ))}
       </div>
