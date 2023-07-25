@@ -1,13 +1,13 @@
 import React from 'react'
 import "./Recipe.css"
 
-const Recipe = ({title, url, time}) => {
+const Recipe = ({recipe}) => {
   return (
     <div className='recipe'>
-        <img src={url} alt="" srcset="" />
+        {/* <img src={recipe.picture} /> */}
         <div className='recipe-info'>
-            <div>{title}</div>
-            <div>Temps de préparation :  {time}min</div>
+            <div>{recipe.title}</div>
+            <div>Temps de préparation :  {recipe.time} min</div>
         </div>
         
 
