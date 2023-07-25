@@ -21,4 +21,12 @@ function App () {
   )
 }
 
+// check text area value
+// search bar
+// home page
+// boutons filtre duree / date d'ajout
+// detail recette
+// adapter valeurs a portions
+// user input formulaire
+
 export default App
