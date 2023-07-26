@@ -4,8 +4,8 @@ import './Ingredient.scss'
 const Ingredient = ({ ingredient }) => {
   return (
     <div>
-      {ingredient.ingredients} - {ingredient.ingredientsQuantity} -{' '}
-      {ingredient.ingredientsUnite}
+      {ingredient.ingredientsQuantity} 
+      {ingredient.ingredientsUnite} de {ingredient.ingredients}
     </div>
   )
 }
