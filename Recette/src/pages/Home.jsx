@@ -42,7 +42,7 @@ const Home = () => {
         </div>
         {sortedRecipes.map((recipe, i) => (
         recipe.title.toLowerCase().includes(inputText.toLowerCase()) &&
-          <div className='recipe'>
+          <div className='recipe' key={i}>
             <Link to={`/details-recette/${i}`}>
               <Recipe key={i} recipe={recipe} />
             </Link>
