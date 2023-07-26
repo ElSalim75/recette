@@ -1,6 +1,9 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
 import './FormRecipe.scss'
 import {useRecipes} from '../contexts/RecipeContexts'
+import Ingredient from '../components/Ingredient'
+import {v4 as uuidv4} from 'uuid';
+
 
 const Formulaire = () => {
     const [title, setTitle] = useState('')
@@ -10,15 +13,30 @@ const Formulaire = () => {
     const [difficulty, setDifficulty] = useState('')
     const [portion, setPortion] = useState(0)
     const [tags, setTags] = useState('')
+    const [ingredientList, setIngredientList] = useState([])
     const [ingredients, setIngredients] = useState('')
     const [ingredientsQuantity, setIngredientsQuantity] = useState(0)
     const [ingredientsUnite, setIngredientsUnite] = useState('')
 
     const {addRecipe} = useRecipes()
 
+    const addIngredient = e => {
+        e.preventDefault()
+        setIngredientList([
+            ...ingredientList,
+            {
+                ingredients: ingredients,
+                ingredientsQuantity: ingredientsQuantity,
+                ingredientsUnite: ingredientsUnite
+            }
+        ])
+        console.log('added')
+    }
+
     const handleSubmit = e => {
         e.preventDefault()
         addRecipe({
+            id: uuidv4(),
             title: title,
             steps: steps,
             picture: picture,
@@ -37,8 +55,9 @@ const Formulaire = () => {
     return (
         <div className='divForm'>
             <h1>Ajouter une nouvelle recette</h1>
-            <form onSubmit={handleSubmit} className='form'>
+            <form className='form'>
                 <input
+                    required
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                     type='text'
@@ -69,6 +88,7 @@ const Formulaire = () => {
                 <select
                     value={difficulty}
                     onChange={e => setDifficulty(e.target.value)}
+                    type='text'
                     placeholder='Difficulté'
                     id='selectDiff'
                 >
@@ -93,31 +113,38 @@ const Formulaire = () => {
                     placeholder='Tags'
                     id='inputTags'
                 />
-                {/* 2txt 1 select ingredient */}
-
-                <input
-                    value={ingredients}
-                    onChange={e => setIngredients(e.target.value)}
-                    type='text'
-                    placeholder='Ingrédients'
-                    id='inputIngredients'
-                />
-                <input
-                    value={ingredientsQuantity}
-                    onChange={e => setIngredientsQuantity(e.target.value)}
-                    type='text'
-                    placeholder='Ingrédients'
-                    id='inputIngredients'
-                ></input>
-                <select
-                    value={ingredientsUnite}
-                    onChange={e => setIngredientsUnite(e.target.value)}
-                >
-                    <option value='g'></option>
-                    <option value='kg'></option>
-                    <option value='L'></option>
-                </select>
-                <button type='submit'>Valider</button>
+                <div className='ingredients'>
+                    <input
+                        value={ingredients}
+                        onChange={e => setIngredients(e.target.value)}
+                        type='text'
+                        placeholder='Ingrédients'
+                    />
+                    <input
+                        value={ingredientsQuantity}
+                        onChange={e => setIngredientsQuantity(e.target.value)}
+                        type='number'
+                        placeholder='Poids'
+                    ></input>
+                    <select
+                        value={ingredientsUnite}
+                        onChange={e => setIngredientsUnite(e.target.value)}
+                    >
+                        <option value=''>-- Unité --</option>
+                        <option value='g'>g</option>
+                        <option value='kg'>kg</option>
+                        <option value='L'>L</option>
+                    </select>
+                    <button className='add-ingredient-btn' onClick={addIngredient}>
+                        +
+                    </button>
+                </div>
+                <div className='ingredient-display'>
+                    {ingredientList.map((ingredient, i) => (
+                        <Ingredient key={i} ingredient={ingredient}/>
+                    ))}
+                </div>
+                <button onClick={handleSubmit}>Valider</button>
             </form>
         </div>
     )
