@@ -33,7 +33,7 @@ const RecetteDetails = () => {
                             </div>
                             <div className='details'>
                                 <div className='time'>
-                                    {recipe.time}
+                                    {recipe.time} min
                                 </div>
                                 <div className='level'>
                                     {recipe.difficulty}
@@ -44,7 +44,7 @@ const RecetteDetails = () => {
                                     <div className='tag'>#crepe</div>
                                 </div>
                                 <div className='portion'>
-                                    portion
+                                    {recipe.portion}
                                 </div>
                             </div>
                         </div>
