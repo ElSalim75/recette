@@ -32,8 +32,7 @@ const RecetteDetails = () => {
                 <div className='title'>{recipe.title}</div>
                 <div className='body'>
                     <div className='left'>
-                        <img src="" alt=""/>
-                        <div></div>
+                        <img src={recipe.picture} alt={recipe.title}/>
                     </div>
                     <div className='right'>
                         <div className='info'>
