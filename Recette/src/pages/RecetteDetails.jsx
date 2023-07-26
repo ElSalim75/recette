@@ -5,7 +5,6 @@ import {useRecipes} from '../contexts/RecipeContexts'
 const RecetteDetails = () => {
 
     const {id} = useParams()
-    const idRecipes = Number(id)
 
     const {recipes} = useRecipes()
     const recipe = recipes.find((r) => r.id === id); 
