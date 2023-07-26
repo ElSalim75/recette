@@ -8,7 +8,10 @@ const RecetteDetails = () => {
     const idRecipes = Number(id)
 
     const {recipes} = useRecipes()
-    const recipe = {id: recipes[idRecipes]}
+    const recipe = recipes.find((r) => r.id === id); 
+    //on recupere le tableau, on passe en argument notre recipe (r), on prend l'id de cette recette et on compare a l'id de l'url.
+
+
 
     return (
         <>
@@ -17,7 +20,7 @@ const RecetteDetails = () => {
                 <div className='body'>
                     <div className='left'>
                         <img src="" alt=""/>
-                        <div>{recipe.steps}</div>
+                        <div></div>
                     </div>
                     <div className='right'>
                         <div className='info'>
