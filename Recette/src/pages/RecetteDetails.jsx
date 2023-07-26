@@ -1,15 +1,29 @@
 import './RecetteDetails.scss'
 import {useParams} from 'react-router-dom'
 import {useRecipes} from '../contexts/RecipeContexts'
+import Tag from "../components/Tag.jsx";
+import Ingredient from "../components/Ingredient.jsx";
+import {useState} from "react";
 
 const RecetteDetails = () => {
-
     const {id} = useParams()
-
     const {recipes} = useRecipes()
-    const recipe = recipes.find((r) => r.id === id); 
+    const recipe = recipes.find((r) => r.id === id);
     //on recupere le tableau, on passe en argument notre recipe (r), on prend l'id de cette recette et on compare a l'id de l'url.
 
+    const [portionChange, setPortionChange] = useState(recipe.portion)
+
+    const portionIncrease = () => {
+        if (portionChange < 5) {
+            setPortionChange(portionChange + 1);
+        }
+    }
+
+    const portionDecrease = () => {
+        if (portionChange > 1) {
+            setPortionChange(portionChange - 1);
+        }
+    }
 
 
     return (
@@ -23,14 +37,11 @@ const RecetteDetails = () => {
                     </div>
                     <div className='right'>
                         <div className='info'>
-                            <div className='ingredients-list'>
-                                <ul>
-                                    <li>1 oeuf</li>
-                                    <li>500g farine</li>
-                                    <li>200g sucre</li>
-                                    <li>50cl eau</li>
-                                </ul>
-                            </div>
+                            <ul className='ingredients-list'>
+                                {recipe.ingredientList.map((ingredient, i) => (
+                                    <li key={i}><Ingredient ingredient={ingredient} portionChange={portionChange}/></li>
+                                ))}
+                            </ul>
                             <div className='details'>
                                 <div className='time'>
                                     {recipe.time} min
@@ -39,12 +50,15 @@ const RecetteDetails = () => {
                                     {recipe.difficulty}
                                 </div>
                                 <div className='tags'>
-                                    <div className='tag'>#crepe</div>
-                                    <div className='tag'>#crepe</div>
-                                    <div className='tag'>#crepe</div>
+                                    {recipe.tags.map((tag, i) => (
+                                        <Tag key={i} tag={tag}/>
+                                    ))}
                                 </div>
                                 <div className='portion'>
-                                    {recipe.portion}
+                                    <span>Portions : </span>
+                                    <button onClick={portionDecrease}>-</button>
+                                    {portionChange}
+                                    <button onClick={portionIncrease}>+</button>
                                 </div>
                             </div>
                         </div>
