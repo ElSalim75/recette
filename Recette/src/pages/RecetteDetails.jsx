@@ -1,13 +1,23 @@
 import './RecetteDetails.scss'
+import {useParams} from 'react-router-dom'
+import {useRecipes} from '../contexts/RecipeContexts'
 
 const RecetteDetails = () => {
+
+    const {id} = useParams()
+    const idRecipes = Number(id)
+
+    const {recipes} = useRecipes()
+    const recipe = {id: recipes[idRecipes]}
+
     return (
         <>
             <div className='main'>
-                <div className='title'>TITLE</div>
+                <div className='title'>{recipe.title}</div>
                 <div className='body'>
                     <div className='left'>
                         <img src="" alt=""/>
+                        <div>{recipe.steps}</div>
                     </div>
                     <div className='right'>
                         <div className='info'>
@@ -21,10 +31,10 @@ const RecetteDetails = () => {
                             </div>
                             <div className='details'>
                                 <div className='time'>
-                                    1h20min
+                                    {recipe.time}
                                 </div>
                                 <div className='level'>
-                                    level
+                                    {recipe.difficulty}
                                 </div>
                                 <div className='tags'>
                                     <div className='tag'>#crepe</div>
