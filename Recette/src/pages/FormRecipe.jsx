@@ -163,12 +163,6 @@ const Formulaire = () => {
                     </div>
                     <div className='ingredientsForm'>
                         <input
-                            value={ingredients}
-                            onChange={e => setIngredients(e.target.value)}
-                            type='text'
-                            placeholder='Ingrédients'
-                        />
-                        <input
                             value={ingredientsQuantity}
                             onChange={e => setIngredientsQuantity(e.target.value)}
                             type='number'
@@ -183,6 +177,12 @@ const Formulaire = () => {
                             <option value='kg'>kg</option>
                             <option value='L'>L</option>
                         </select>
+                        <input
+                            value={ingredients}
+                            onChange={e => setIngredients(e.target.value)}
+                            type='text'
+                            placeholder='Ingrédients'
+                        />
                         <button className='add-ingredient-btn' onClick={addIngredient}>
                             +
                         </button>
