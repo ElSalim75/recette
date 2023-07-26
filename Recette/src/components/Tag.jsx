@@ -3,8 +3,8 @@ import './Tag.scss'
 
 const Tag = ({ tag }) => {
     return (
-        <div className='tag'>
-            {tag}
+        <div className='tag-comp'>
+            #{tag}
         </div>
     )
 }
