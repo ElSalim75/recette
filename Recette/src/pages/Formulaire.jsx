@@ -1,8 +1,7 @@
-
 const Formulaire = () => {
-  return (
-    <div>Formulaire</div>
-  )
+    return (
+        <div>Formulaire</div>
+    )
 }
 
 export default Formulaire
