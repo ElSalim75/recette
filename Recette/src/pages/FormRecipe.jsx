@@ -3,6 +3,7 @@ import './FormRecipe.scss'
 import {useRecipes} from '../contexts/RecipeContexts'
 import Ingredient from '../components/Ingredient'
 import {v4 as uuidv4} from 'uuid';
+import Tag from "../components/Tag.jsx";
 
 
 const Formulaire = () => {
@@ -11,12 +12,14 @@ const Formulaire = () => {
     const [picture, setPicture] = useState('')
     const [time, setTime] = useState('')
     const [difficulty, setDifficulty] = useState('')
-    const [portion, setPortion] = useState(0)
+    const [portion, setPortion] = useState('')
     const [tags, setTags] = useState('')
+    const [tagList, setTagList] = useState([])
     const [ingredientList, setIngredientList] = useState([])
     const [ingredients, setIngredients] = useState('')
-    const [ingredientsQuantity, setIngredientsQuantity] = useState(0)
+    const [ingredientsQuantity, setIngredientsQuantity] = useState('')
     const [ingredientsUnite, setIngredientsUnite] = useState('')
+    const [completeRecipe, setCompleteRecipe] = useState(false)
 
     const {addRecipe} = useRecipes()
 
@@ -30,7 +33,15 @@ const Formulaire = () => {
                 ingredientsUnite: ingredientsUnite
             }
         ])
-        console.log('added')
+        setIngredients('');
+        setIngredientsQuantity('');
+        setIngredientsUnite('');
+    }
+
+    const addTags = (e) => {
+        e.preventDefault()
+        setTagList([...tagList, tags])
+        setTags('');
     }
 
     const handleSubmit = e => {
@@ -50,12 +61,13 @@ const Formulaire = () => {
                 ingredientsUnite: ingredientsUnite
             }
         })
+        setCompleteRecipe(true);
     }
 
     return (
         <div className='divForm'>
             <h1>Ajouter une nouvelle recette</h1>
-            <form className='form'>
+            <form className='form' onSubmit={handleSubmit}>
                 <input
                     required
                     value={title}
@@ -65,6 +77,7 @@ const Formulaire = () => {
                     className='input'
                 />
                 <input
+                    required
                     value={steps}
                     onChange={e => setSteps(e.target.value)}
                     type='text'
@@ -72,6 +85,7 @@ const Formulaire = () => {
                     id='inputSteps'
                 />
                 <input
+                    required
                     value={picture}
                     onChange={e => setPicture(e.target.value)}
                     type='text'
@@ -79,6 +93,7 @@ const Formulaire = () => {
                     className='input'
                 />
                 <input
+                    required
                     value={time}
                     onChange={e => setTime(e.target.value)}
                     type='number'
@@ -86,18 +101,19 @@ const Formulaire = () => {
                     className='input'
                 />
                 <select
+                    required
                     value={difficulty}
                     onChange={e => setDifficulty(e.target.value)}
-                    type='text'
                     placeholder='Difficulté'
                     id='selectDiff'
                 >
                     <option value=''>-- Choisissez une difficulté --</option>
                     <option value='facile'>Facile</option>
-                    <option value='intermediaire'>Intermediaire</option>
+                    <option value='moyen'>Moyen</option>
                     <option value='difficile'>Difficile</option>
                 </select>
                 <input
+                    required
                     value={portion}
                     onChange={e => setPortion(e.target.value)}
                     type='number'
@@ -106,13 +122,23 @@ const Formulaire = () => {
                     min='1'
                     max='5'
                 />
-                <input
-                    value={tags}
-                    onChange={e => setTags(e.target.value)}
-                    type='text'
-                    placeholder='Tags'
-                    id='inputTags'
-                />
+                <div className='tags'>
+                    <input
+                        value={tags}
+                        onChange={e => setTags(e.target.value)}
+                        type='text'
+                        placeholder='Tags'
+                        id='inputTags'
+                    />
+                    <button className='add-tag-btn' onClick={addTags}>
+                        +
+                    </button>
+                </div>
+                <div className='tag-display'>
+                    {tagList.map((tag, i) => (
+                        <Tag key={i} tag={tag}/>
+                    ))}
+                </div>
                 <div className='ingredients'>
                     <input
                         value={ingredients}
@@ -144,7 +170,9 @@ const Formulaire = () => {
                         <Ingredient key={i} ingredient={ingredient}/>
                     ))}
                 </div>
-                <button onClick={handleSubmit}>Valider</button>
+                <button style={{border: completeRecipe ? "2px solid limegreen" : null}} className='submit-button'
+                        type='submit'>Valider
+                </button>
             </form>
         </div>
     )
